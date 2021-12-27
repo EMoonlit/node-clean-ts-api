@@ -15,22 +15,18 @@ export class LoginController implements Controller {
   }
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      const requiredFields = ['email', 'password']
+      for (const field of requiredFields) {
+        if (!httpRequest.body[field]) {
+          return badRequest(new MissingParamError(field))
+        }
+      }
       const { email, password } = httpRequest.body
-      if (!email) {
-        const result = await badRequest(new MissingParamError('email'))
-        return result
-      }
-      if (!password) {
-        const result = await badRequest(new MissingParamError('password'))
-        return result
-      }
       const isValid = this.emailValidator.isValid(email)
       if (!isValid) {
-        const result = await badRequest(new InvalidParamError('email'))
-        return result
+        return badRequest(new InvalidParamError('email'))
       }
       await this.authentication.auth(email, password)
-
     } catch (error) {
       return serverError(error)
     }
