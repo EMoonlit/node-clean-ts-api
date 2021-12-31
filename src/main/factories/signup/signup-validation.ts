@@ -1,5 +1,5 @@
 import { RequiredFieldValidation } from '../../../presentation/helpers/validators/required-field-validation'
-import { Validation } from '../../../presentation/helpers/validators/validation'
+import { Validation } from '../../../presentation/protocols/validation'
 import { ValidationComposit } from '../../../presentation/helpers/validators/validation-composit'
 import { ComprareFieldsValidation } from '../../../presentation/helpers/validators/comprare-fields-validation';
 import { EmailValidatorAdapter } from '../../../utils/email-validator-adapter';
