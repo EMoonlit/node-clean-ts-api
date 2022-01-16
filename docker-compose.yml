@@ -12,10 +12,10 @@ services:
       - api-net
   api:
     container_name: api-container
-    build: .
-    image: clean-node-api
+    image: node:14
+    working_dir: /usr/src/clean-node-api
     restart: always
-    command: npm run debug
+    command: bash -c "npm install --only=prod && npm run debug"
     networks:
       - api-net
     volumes:
