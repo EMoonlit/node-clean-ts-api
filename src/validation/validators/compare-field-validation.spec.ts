@@ -1,4 +1,4 @@
-import { InvalidParamError } from "../../errors"
+import { InvalidParamError } from "../../presentation/errors"
 import { ComprareFieldsValidation } from "./comprare-fields-validation"
 
 
